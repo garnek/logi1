@@ -1,9 +1,26 @@
 package pl.garnek.logi.reqresp.czas
 
-class Mejn {
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-	static main(args) {
+import pl.garnek.logi.reqresp.czas.plik.Czytacz;
+
+class Mejn {
 	
+	static main(args) {
+		try {
+			
+			ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
+			
+			Starter starter = ctx.getBean(Starter.class)
+			assert starter != null;
+			
+			starter.startuj()
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
