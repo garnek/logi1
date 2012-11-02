@@ -9,20 +9,27 @@
 	<context:annotation-config />
 	<context:component-scan base-package="pl.garnek" />
 
-	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
-		<property name="locations" value="classpath:props.properties" />
-	</bean>
+	<context:property-placeholder location="classpath:props.properties" />
 
-	<bean id="czytaczCfgAbs" abstract="true" >
-		<property name="sciezkaBaza" value="${sciezka.baza}" />
-	</bean>
 
-	<bean id="czytaczCfgReq" parent="czytaczCfgAbs" class="pl.garnek.logi.reqresp.czas.plik.Czytacz.Konfiguracja">
-		<property name="sciezkaRegexp" value="${sciezka.req}" />
+	<bean id="filtrPlikowReq" class="pl.garnek.logi.reqresp.czas.plik.FiltrPlikow">
+		<property name="sciezkaRegexp" value="${filtr.req.sciezka}" />
 	</bean>
 	
-	<bean id="czytaczCfgResp" parent="czytaczCfgAbs" class="pl.garnek.logi.reqresp.czas.plik.Czytacz.Konfiguracja">
-		<property name="sciezkaRegexp" value="${sciezka.resp}" />
+	<bean id="filtrPlikowResp" class="pl.garnek.logi.reqresp.czas.plik.FiltrPlikow">
+		<property name="sciezkaRegexp" value="${filtr.resp.sciezka}" />
+	</bean>
+	
+	<bean id="filtrLiniiReq" class="pl.garnek.logi.reqresp.czas.deltaodpowiedzi.FiltrLinii">
+		<property name="tekstWLinii" value="${filtr.req.linia}" />
+	</bean>
+	
+	<bean id="filtrLiniiResp" class="pl.garnek.logi.reqresp.czas.deltaodpowiedzi.FiltrLinii">
+		<property name="tekstWLinii" value="${filtr.resp.linia}" />
+	</bean>
+	
+	<bean id="filtrLiniiCzasyZapytan" class="pl.garnek.logi.reqresp.czas.czestosrequestow.FiltrLinii">
+		<property name="tekstWLinii" value="${filtr.req.linia}" />
 	</bean>
 	
 </beans>

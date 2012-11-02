@@ -1,19 +1,19 @@
-package pl.garnek.logi.reqresp.czas
+package pl.garnek.logi.reqresp.czas.czestosrequestow
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import pl.garnek.logi.reqresp.czas.plik.Czytacz;
+import pl.garnek.logi.reqresp.czas.plik.SzukaczPlikow;
 
-class Mejn {
+class MejnCzestoscRequestow {
 	
 	static main(args) {
 		try {
 			
 			ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 			
-			Starter starter = ctx.getBean(Starter.class)
+			StarterCzestoscRequestow starter = ctx.getBean(StarterCzestoscRequestow.class)
 			assert starter != null;
 			
 			starter.startuj()
